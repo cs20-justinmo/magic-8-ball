@@ -1,20 +1,26 @@
-document.getElementById("eightball").addEventListener("click", magicEight);
+document.getElementById("eightball").addEventListener("click", getResponse);
 
-let ballOutArray = ["It is certain.", "It is decidedly so.", "Without a doubt.", "Yes definitely.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", "Don't count on it.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Very doubtful."]
+let output = document.getElementById("eightout");
 
-function magicEight() {
+function getResponse() {
     let input = document.getElementById("eighttext").value.toLowerCase();
-    let output = document.getElementById("eightout0");
     if (input == "") {
-        output.innerHTML = "Please input a question.";
-    } else if (input == "hi" || input == "jellobj") {
-        output.innerHTML = "Hello!";
-    } else if (input == "are you happy?" || input == "are you sad?" || input == "do you love me?") {
-        output.innerHTML = "A Magic 8 Ball cannot feel emotion.";
-    } else if (input == "what is the answer to life the universe and everything?") {
-        output.innerHTML = "42, but what is the question?"
+        output.innerHTML = "Please ask a question...";
+    } else if (input == "does a magic 8 ball actually work?") {
+        output.innerHTML = "How dare you doubt me!";
+    } else if (input == "is javascript awesome?") {
+        output.innerHTML = "Of Course!";
     } else {
-        let randNum = Math.round(Math.random() * 20);
-        output.innerHTML = ballOutArray[randNum];
+        output.innerHTML = randomResponse();
     }
+}
+
+function randomResponse() {
+    let randNum = Math.random();
+    console.log(randNum)
+    if (randNum < 0.2) return "Without a Doubt.";
+    else if (randNum < 0.4) return "As I see it, yes.";
+    else if (randNum < 0.6) return "Concentrate and ask again.";
+    else if (randNum < 0.8) return "Don't count on it.";
+    else return "Outlook not so good.";
 }
